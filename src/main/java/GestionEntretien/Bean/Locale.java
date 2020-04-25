@@ -5,12 +5,16 @@
  */
 package GestionEntretien.Bean;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -25,8 +29,27 @@ public class Locale implements Serializable {
     private Long id;
     private String nom;
     
-    @ManyToMany
-    private Materiel materiel;
+    @OneToMany(mappedBy = "local")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<LocalDetails> LocalDetails;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public List<LocalDetails> getLocalDetails() {
+        return LocalDetails;
+    }
+
+    public void setLocalDetails(List<LocalDetails> LocalDetails) {
+        this.LocalDetails = LocalDetails;
+    }
+    
+    
 
     public Long getId() {
         return id;

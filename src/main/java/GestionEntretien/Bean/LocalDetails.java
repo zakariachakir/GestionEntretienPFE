@@ -10,20 +10,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
- * @author lenovo
+ * @author Zakaria
  */
 @Entity
-public class MaterielInformatique extends Materiel implements Serializable {
+public class LocalDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+ 
+    @ManyToOne
+    private Materiel materiel;
     
-
+    @ManyToOne
+    private Locale local;
+    
+    
     public Long getId() {
         return id;
     }
@@ -42,10 +49,10 @@ public class MaterielInformatique extends Materiel implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MaterielInformatique)) {
+        if (!(object instanceof LocalDetails)) {
             return false;
         }
-        MaterielInformatique other = (MaterielInformatique) object;
+        LocalDetails other = (LocalDetails) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -54,7 +61,7 @@ public class MaterielInformatique extends Materiel implements Serializable {
 
     @Override
     public String toString() {
-        return "GestionEntretien.Bean.MaterielInformatique[ id=" + id + " ]";
+        return "GestionEntretien.Bean.LocalDetails[ id=" + id + " ]";
     }
     
 }

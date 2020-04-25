@@ -35,8 +35,7 @@ public class Materiel implements Serializable {
     private Date dateEntrerFac;
     
     
-    @ManyToMany
-    protected Locale locale;
+    
 
     public String getMarque() {
         return marque;
@@ -70,14 +69,6 @@ public class Materiel implements Serializable {
         this.dateEntrerFac = dateEntrerFac;
     }
 
-    public Locale getLocale() {
-        return locale;
-    }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-    }
-    
     
 
     
